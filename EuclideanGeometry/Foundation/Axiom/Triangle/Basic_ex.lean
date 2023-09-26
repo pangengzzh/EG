@@ -53,6 +53,18 @@ theorem is_inside_of_is_inside_perm_vertices (tr : Triangle P) (p : P) (inside :
 theorem is_inside_of_is_inside_flip_vertices (tr : Triangle P) (p : P) (inside : p LiesInt tr) : p LiesInt tr.flip_vertices := by sorry
 
 
+/- In the following theorems, we show that the points on the interior of different edges of triangle are not equal.-/
+
+namespace Triangle
+
+theorem ne_vertex_of_lies_int_fst_edge (tr : Triangle P) {A : P} (h : A LiesInt tr.edge₁) : A ≠ tr.point₁ ∧  A ≠ tr.point₂ ∧ A ≠ tr.point₃ := sorry
+
+theorem ne_vertex_of_lies_int_snd_edge (tr : Triangle P) {A : P} (h : A LiesInt tr.edge₂) : A ≠ tr.point₁ ∧  A ≠ tr.point₂ ∧ A ≠ tr.point₃ := sorry
+
+theorem ne_vertex_of_lies_int_trd_edge (tr : Triangle P) {A : P} (h : A LiesInt tr.edge₃) : A ≠ tr.point₁ ∧  A ≠ tr.point₂ ∧ A ≠ tr.point₃ := sorry
+
+end Triangle
+
 
 theorem Triangle.lie_on_snd_and_trd_edge_of_fst_vertex (tr : Triangle P) : tr.point₁ LiesOn tr.edge₂ ∧ tr.point₁ LiesOn tr.edge₃ := sorry
 
@@ -69,6 +81,26 @@ theorem not_lie_on_trd_and_fst_of_int_snd (trind : Triangle_nd P) {A : P} (h: A 
 
 theorem not_lie_on_fst_and_snd_of_int_trd (trind : Triangle_nd P){A : P} (h: A LiesInt trind.1.edge₃) : (¬ A LiesOn trind.1.edge₁) ∧ (¬ A LiesOn trind.1.edge₂) := sorry
 
+
+end Triangle_nd
+
+namespace Triangle
+
+theorem edge_eq_edge_of_flip_vertices (tr : Triangle P) : tr.edge₁.length = tr.flip_vertices.edge₁.length ∧ tr.edge₂.length = tr.flip_vertices.edge₃.length ∧ tr.edge₃.length = tr.flip_vertices.edge₂.length := by sorry
+
+theorem edge_eq_edge_of_perm_vertices (tr : Triangle P) : tr.edge₁.length = tr.perm_vertices.edge₂.length ∧ tr.edge₂.length = tr.perm_vertices.edge₃.length ∧ tr.edge₃.length = tr.perm_vertices.edge₁.length := by sorry
+
+end Triangle
+
+namespace Triangle_nd
+
+theorem edge_eq_edge_of_flip_vertices (tr_nd : Triangle_nd P) : tr_nd.1.edge₁.length = tr_nd.flip_vertices.1.edge₁.length ∧ tr_nd.1.edge₂.length = tr_nd.flip_vertices.1.edge₃.length ∧ tr_nd.1.edge₃.length = tr_nd.flip_vertices.1.edge₂.length := by sorry
+
+theorem edge_eq_edge_of_perm_vertices (tr_nd : Triangle_nd P) : tr_nd.1.edge₁.length = tr_nd.perm_vertices.1.edge₂.length ∧ tr_nd.1.edge₂.length = tr_nd.perm_vertices.1.edge₃.length ∧ tr_nd.1.edge₃.length = tr_nd.perm_vertices.1.edge₁.length := by sorry
+
+theorem angle_eq_neg_angle_of_flip_vertices (tr_nd : Triangle_nd P) : tr_nd.angle₁.value = - tr_nd.flip_vertices.angle₁.value ∧ tr_nd.angle₂.value = -tr_nd.flip_vertices.angle₃.value ∧ tr_nd.angle₃.value = -tr_nd.flip_vertices.angle₂.value := by sorry 
+
+theorem angle_eq_angle_of_perm_vertices (tr_nd : Triangle_nd P) : tr_nd.angle₁.value = tr_nd.perm_vertices.angle₂.value ∧ tr_nd.angle₂.value = tr_nd.perm_vertices.angle₃.value ∧ tr_nd.angle₃.value = tr_nd.perm_vertices.angle₁.value := by sorry
 
 end Triangle_nd
 
